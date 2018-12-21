@@ -1,0 +1,29 @@
+*** Settings ***
+Resource          ../../../../model/html_model_new.txt
+
+
+*** Test Cases ***
+01001机构考勤查询-成功
+    [Tags]
+    [Template]    html_public_model
+    msp:getBranchAttendList    branchCode:=86,8600,860000,86000000,8644,864400,86440000,86440014,864406,86440600,864419,86441900,8648,864800,86480000,86480005,86480007,86480009;startDate:=2018-09-01;endDate:=2018-09-13    flag:=Y
+
+01002各层级出勤率-成功
+    [Tags]
+    [Template]    html_public_model
+    msp:getLayerLevelList    branchCode:=8648;startDate:=2018-04-01;endDate:=2018-04-28    flag:=Y
+
+01003各层级出勤率-机构代码不能为空
+    [Tags]
+    [Template]    html_public_model
+    msp:getLayerLevelList    branchCode:=;startDate:=2018-04-01;endDate:=2018-04-28    flag:=N;msg:=机构代码不能为空
+
+01004各层级出勤率-查询开始时间为空
+    [Tags]
+    [Template]    html_public_model
+    msp:getLayerLevelList    branchCode:=8648;startDate:=;endDate:=2018-04-28    flag:=N;msg:=查询时间不能为空
+
+01005各层级出勤率-查询结束时间为空
+    [Tags]
+    [Template]    html_public_model
+    msp:getLayerLevelList    branchCode:=8648;startDate:=2018-04-01;endDate:=    flag:=N;msg:=查询时间不能为空

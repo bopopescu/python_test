@@ -1,0 +1,39 @@
+*** Settings ***
+Resource          ../../../../model/html_model.txt
+
+*** Test Cases ***
+01001新单录入--爱倍至趸交终身
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.1:saveClient.do    mainProduct.sumInsured:=10000;mspApplyInfo.receivableAddBal:=1000;mainProduct.productCode:=1005;mainProduct.premPeriodTypeDesc:=1_0;mainProduct.coverPeriodTypeDesc:=6_999;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知
+
+01002新单录入--补偿医疗A款缴1年
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.01:saveClient.do;saveHealthInform.do;saveClient.slis.db    mainProduct.sumInsured:=10000;mspApplyInfo.receivableAddBal:=0;mainProduct.productCode:=1009;mainProduct.premPeriodTypeDesc:=1;mainProduct.coverPeriodTypeDesc:=1;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=规则检查结果
+
+01003新单录入--爱倍至缴3年
+    [Documentation]    2018.3.22号版本校验放到录入页面：招商仁和爱倍至重大疾病保险;当主险爱倍至为年交方式时,必须以组合形式投保：爱倍至+附加豁免重疾
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.02;msp.01;msp.01:saveClient.do;saveHealthInform.do;saveClient.slis.db    mainProduct.premPeriod:=3;mainProduct.premPeriodTypeDesc:=2_3;mainProduct.sumInsured:=22000;mspApplyInfo.receivableAddBal:=3000;mainProduct.productCode:=1005;mainProduct.coverPeriodTypeDesc:=6_999;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=规则检查结果
+
+01004新单录入--爱倍至缴5年
+    [Template]    html_public_model
+    msp.02;msp.01;msp.01:saveClient.do;saveHealthInform.do;saveClient.slis.db    mainProduct.premPeriod:=5;mainProduct.premPeriodTypeDesc:=2_5;mainProduct.sumInsured:=22000;mspApplyInfo.receivableAddBal:=5000;mainProduct.productCode:=1005;mainProduct.coverPeriodTypeDesc:=6_999;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=规则检查结果
+
+01005新单录入--爱倍至缴10年
+    [Template]    html_public_model
+    msp.02;msp.01;msp.01:saveClient.do;saveHealthInform.do;saveClient.slis.db    mainProduct.premPeriod:=10;mainProduct.premPeriodTypeDesc:=2_10;mainProduct.sumInsured:=22000;mspApplyInfo.receivableAddBal:=10000;mainProduct.productCode:=1005;mainProduct.coverPeriodTypeDesc:=6_999;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=规则检查结果
+
+01006新单录入--爱倍至缴15年
+    [Template]    html_public_model
+    msp.02;msp.01;msp.01:saveClient.do;saveHealthInform.do;saveClient.slis.db    mainProduct.premPeriod:=15;mainProduct.premPeriodTypeDesc:=2_15;mainProduct.sumInsured:=22000;mspApplyInfo.receivableAddBal:=15000;mainProduct.productCode:=1005;mainProduct.coverPeriodTypeDesc:=6_999;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=规则检查结果
+
+01007新单录入--爱倍至缴20年
+    [Template]    html_public_model
+    msp.02;msp.01;msp.01:saveClient.do;saveHealthInform.do;saveClient.slis.db    mainProduct.premPeriod:=20;mainProduct.premPeriodTypeDesc:=2_20;mainProduct.sumInsured:=22000;mspApplyInfo.receivableAddBal:=20000;mainProduct.productCode:=1005;mainProduct.coverPeriodTypeDesc:=6_999;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=规则检查结果
+
+01008新单录入--爱倍至缴至60岁
+    [Template]    html_public_model
+    msp.02;msp.01;msp.01:saveClient.do;saveHealthInform.do;saveClient.slis.db    mainProduct.premPeriodType:=3;mainProduct.premPeriod:=60;mainProduct.premPeriodTypeDesc:=3_60;mainProduct.sumInsured:=22000;mspApplyInfo.receivableAddBal:=60000;mainProduct.productCode:=1005;mainProduct.coverPeriodTypeDesc:=6_999;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=规则检查结果

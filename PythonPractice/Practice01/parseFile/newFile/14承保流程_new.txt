@@ -1,0 +1,133 @@
+*** Settings ***
+Resource          ../../../../model/html_model_new.txt
+
+
+*** Test Cases ***
+14001新单录入到承保-爱倍至-投保成功
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.1:saveClient.do    mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$;mspAuthorizedAccount.accountNo:=6227 0088 8899 8977 991    ResultInfoDesc:=健康告知    msp.1:saveHealthInform.do    mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=投保规则检查通过    msp:imageUploding.do    mspNo:=$g_random$    ResultInfoDesc:=成功
+    ...    msp:ownCheck.do    mspNo:=$g_random$    ResultInfoDesc:=自动核保通过    msp:getPhonePayPwd.do    mspNo:=$g_random$    flag:=Y;message:=发送成功    msp:pay.do    mspNo:=$g_random$    0.error:=交易成功
+    ...    msp:issueByBarCode.do    mspNo:=$g_random$    ResultInfoDesc:=投保成功    msp:issueByBarCode.slis.db
+
+14002新单录入到承保-仁安无忧
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.1:saveClient.do    mainProduct.productCode:=1013;mspApplyInfo.receivableAddBal:=0;mainProduct.premPeriodType:=2;mainProduct.premPeriod:=1;mainProduct.premPeriodTypeDesc:=2_1;mainProduct.coverPeriodType:=1;mainProduct.coverPeriod:=1;mainProduct.coverPeriodTypeDesc:=1_1;mainProduct.sumInsured:=200000;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    msp.1:saveHealthInform.do    mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=投保规则检查通过    msp:imageUploding.do    mspNo:=$g_random$    ResultInfoDesc:=成功
+    ...    msp:ownCheck.do    mspNo:=$g_random$    ResultInfoDesc:=自动核保通过    msp:getPhonePayPwd.do    mspNo:=$g_random$    flag:=Y;message:=发送成功    msp:pay.do    mspNo:=$g_random$    0.error:=交易成功
+    ...    msp:issueByBarCode.do    mspNo:=$g_random$    ResultInfoDesc:=投保成功    msp:issueByBarCode.slis.db
+
+14003新单录入到承保-医保费用补偿A款
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.1:saveClient.do    mainProduct.productCode:=1009;mspApplyInfo.receivableAddBal:=0;mainProduct.premPeriodType:=2;mainProduct.premPeriod:=1;mainProduct.premPeriodTypeDesc:=2_1;mainProduct.coverPeriodType:=1;mainProduct.coverPeriod:=1;mainProduct.coverPeriodTypeDesc:=1_1;mainProduct.sumInsured:=10000;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    msp.1:saveHealthInform.do    policyQuestionnaireDTO[35].insQuestionAnswerList[0].answer:=Y;policyQuestionnaireDTO[35].appQuestionAnswer.answer:=N;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=投保规则检查通过    msp:imageUploding.do    mspNo:=$g_random$    ResultInfoDesc:=成功
+    ...    msp:ownCheck.do    mspNo:=$g_random$    ResultInfoDesc:=自动核保通过    msp:getPhonePayPwd.do    mspNo:=$g_random$    flag:=Y;message:=发送成功    msp:pay.do    mspNo:=$g_random$    0.error:=交易成功
+    ...    msp:issueByBarCode.do    mspNo:=$g_random$    ResultInfoDesc:=投保成功    msp:issueByBarCode.slis.db
+
+14004新单录入到承保-医保费用补偿B款
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.1:saveClient.do    mainProduct.productCode:=1010;mspApplyInfo.receivableAddBal:=0;mainProduct.premPeriodType:=2;mainProduct.premPeriod:=1;mainProduct.premPeriodTypeDesc:=2_1;mainProduct.coverPeriodType:=1;mainProduct.coverPeriod:=1;mainProduct.coverPeriodTypeDesc:=1_1;mainProduct.sumInsured:=10000;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    msp.1:saveHealthInform.do    policyQuestionnaireDTO[35].insQuestionAnswerList[0].answer:=N;policyQuestionnaireDTO[35].appQuestionAnswer.answer:=Y;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=投保规则检查通过    msp:imageUploding.do    mspNo:=$g_random$    ResultInfoDesc:=成功
+    ...    msp:ownCheck.do    mspNo:=$g_random$    ResultInfoDesc:=自动核保通过    msp:getPhonePayPwd.do    mspNo:=$g_random$    flag:=Y;message:=发送成功    msp:pay.do    mspNo:=$g_random$    0.error:=交易成功
+    ...    msp:issueByBarCode.do    mspNo:=$g_random$    ResultInfoDesc:=投保成功    msp:issueByBarCode.slis.db
+
+14005新单录入到承保-招盈金生-趸交-终身-投保成功
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.1:saveClient.do    mainProduct.productCode:=1020;mspApplyInfo.receivableAddBal:=0;mainProduct.premPeriodType:=1;mainProduct.premPeriod:=0;mainProduct.premPeriodTypeDesc:=1_0;mainProduct.coverPeriodType:=6;mainProduct.coverPeriod:=999;mainProduct.coverPeriodTypeDesc:=6_999;mainProduct.sumInsured:=10000;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    msp.1:saveHealthInform.do    policyQuestionnaireDTO[35].insQuestionAnswerList[0].answer:=N;policyQuestionnaireDTO[35].appQuestionAnswer.answer:=Y;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=投保规则检查通过    msp:imageUploding.do    mspNo:=$g_random$    ResultInfoDesc:=成功
+    ...    msp:ownCheck.do    mspNo:=$g_random$    ResultInfoDesc:=自动核保通过    msp:getPhonePayPwd.do    mspNo:=$g_random$    flag:=Y;message:=发送成功    msp:pay.do    mspNo:=$g_random$    0.error:=交易成功
+    ...    msp:issueByBarCode.do    mspNo:=$g_random$    ResultInfoDesc:=投保成功    msp:issueByBarCode.slis.db
+
+14006新单录入到承保-招盈金生-缴3年-终身-投保成功
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.1:saveClient.do    mainProduct.productCode:=1020;mspApplyInfo.receivableAddBal:=0;mainProduct.premPeriodType:=2;mainProduct.premPeriod:=3;mainProduct.premPeriodTypeDesc:=2_3;mainProduct.coverPeriodType:=6;mainProduct.coverPeriod:=999;mainProduct.coverPeriodTypeDesc:=6_999;mainProduct.sumInsured:=10000;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    msp.1:saveHealthInform.do    policyQuestionnaireDTO[35].insQuestionAnswerList[0].answer:=N;policyQuestionnaireDTO[35].appQuestionAnswer.answer:=Y;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=投保规则检查通过    msp:imageUploding.do    mspNo:=$g_random$    ResultInfoDesc:=成功
+    ...    msp:ownCheck.do    mspNo:=$g_random$    ResultInfoDesc:=自动核保通过    msp:getPhonePayPwd.do    mspNo:=$g_random$    flag:=Y;message:=发送成功    msp:pay.do    mspNo:=$g_random$    0.error:=交易成功
+    ...    msp:issueByBarCode.do    mspNo:=$g_random$    ResultInfoDesc:=投保成功    msp:issueByBarCode.slis.db
+
+14007新单录入到承保-招盈金生-缴5年-终身-投保成功
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.1:saveClient.do    mainProduct.productCode:=1020;mspApplyInfo.receivableAddBal:=0;mainProduct.premPeriodType:=2;mainProduct.premPeriod:=5;mainProduct.premPeriodTypeDesc:=2_5;mainProduct.coverPeriodType:=6;mainProduct.coverPeriod:=999;mainProduct.coverPeriodTypeDesc:=6_999;mainProduct.sumInsured:=10000;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    msp.1:saveHealthInform.do    policyQuestionnaireDTO[35].insQuestionAnswerList[0].answer:=N;policyQuestionnaireDTO[35].appQuestionAnswer.answer:=Y;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=投保规则检查通过    msp:imageUploding.do    mspNo:=$g_random$    ResultInfoDesc:=成功
+    ...    msp:ownCheck.do    mspNo:=$g_random$    ResultInfoDesc:=自动核保通过    msp:getPhonePayPwd.do    mspNo:=$g_random$    flag:=Y;message:=发送成功    msp:pay.do    mspNo:=$g_random$    0.error:=交易成功
+    ...    msp:issueByBarCode.do    mspNo:=$g_random$    ResultInfoDesc:=投保成功    msp:issueByBarCode.slis.db
+
+14008新单录入到承保-招盈金生-缴10年-终身-投保成功
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.1:saveClient.do    mainProduct.productCode:=1020;mspApplyInfo.receivableAddBal:=0;mainProduct.premPeriodType:=2;mainProduct.premPeriod:=10;mainProduct.premPeriodTypeDesc:=2_10;mainProduct.coverPeriodType:=6;mainProduct.coverPeriod:=999;mainProduct.coverPeriodTypeDesc:=6_999;mainProduct.sumInsured:=10000;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    msp.1:saveHealthInform.do    policyQuestionnaireDTO[35].insQuestionAnswerList[0].answer:=N;policyQuestionnaireDTO[35].appQuestionAnswer.answer:=Y;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=投保规则检查通过    msp:imageUploding.do    mspNo:=$g_random$    ResultInfoDesc:=成功
+    ...    msp:ownCheck.do    mspNo:=$g_random$    ResultInfoDesc:=自动核保通过    msp:getPhonePayPwd.do    mspNo:=$g_random$    flag:=Y;message:=发送成功    msp:pay.do    mspNo:=$g_random$    0.error:=交易成功
+    ...    msp:issueByBarCode.do    mspNo:=$g_random$    ResultInfoDesc:=投保成功    msp:issueByBarCode.slis.db
+
+14009新单录入到承保-爱相随-有社保-计划1
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.1019:saveClient.do    insureds.clientInfo.socialInsurance:=1;mainProduct.productLevel:=1;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    msp.1:saveHealthInform.do    policyQuestionnaireDTO[35].insQuestionAnswerList[0].answer:=N;policyQuestionnaireDTO[35].appQuestionAnswer.answer:=Y;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=投保规则检查通过    msp:imageUploding.do    mspNo:=$g_random$    ResultInfoDesc:=成功
+    ...    msp:ownCheck.do    mspNo:=$g_random$    ResultInfoDesc:=自动核保通过    msp:getPhonePayPwd.do    mspNo:=$g_random$    flag:=Y;message:=发送成功    msp:pay.do    mspNo:=$g_random$    0.error:=交易成功
+    ...    msp:issueByBarCode.do    mspNo:=$g_random$    ResultInfoDesc:=投保成功    msp:issueByBarCode.slis.db
+
+14010新单录入到承保-爱相随-有社保-计划2
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.1019:saveClient.do    insureds.clientInfo.socialInsurance:=1;mainProduct.productLevel:=2;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    msp.1:saveHealthInform.do    policyQuestionnaireDTO[35].insQuestionAnswerList[0].answer:=N;policyQuestionnaireDTO[35].appQuestionAnswer.answer:=Y;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=投保规则检查通过    msp:imageUploding.do    mspNo:=$g_random$    ResultInfoDesc:=成功
+    ...    msp:ownCheck.do    mspNo:=$g_random$    ResultInfoDesc:=自动核保通过    msp:getPhonePayPwd.do    mspNo:=$g_random$    flag:=Y;message:=发送成功    msp:pay.do    mspNo:=$g_random$    0.error:=交易成功
+    ...    msp:issueByBarCode.do    mspNo:=$g_random$    ResultInfoDesc:=投保成功    msp:issueByBarCode.slis.db
+
+14011新单录入到承保-爱相随-无社保-计划1
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.1019:saveClient.do    insureds.clientInfo.socialInsurance:=2;mainProduct.productLevel:=1;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    msp.1:saveHealthInform.do    policyQuestionnaireDTO[35].insQuestionAnswerList[0].answer:=N;policyQuestionnaireDTO[35].appQuestionAnswer.answer:=Y;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=投保规则检查通过    msp:imageUploding.do    mspNo:=$g_random$    ResultInfoDesc:=成功
+    ...    msp:ownCheck.do    mspNo:=$g_random$    ResultInfoDesc:=自动核保通过    msp:getPhonePayPwd.do    mspNo:=$g_random$    flag:=Y;message:=发送成功    msp:pay.do    mspNo:=$g_random$    0.error:=交易成功
+    ...    msp:issueByBarCode.do    mspNo:=$g_random$    ResultInfoDesc:=投保成功    msp:issueByBarCode.slis.db
+
+14012新单录入到承保-爱相随-无社保-计划2
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.1019:saveClient.do    insureds.clientInfo.socialInsurance:=2;mainProduct.productLevel:=2;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    msp.1:saveHealthInform.do    policyQuestionnaireDTO[35].insQuestionAnswerList[0].answer:=N;policyQuestionnaireDTO[35].appQuestionAnswer.answer:=Y;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=投保规则检查通过    msp:imageUploding.do    mspNo:=$g_random$    ResultInfoDesc:=成功
+    ...    msp:ownCheck.do    mspNo:=$g_random$    ResultInfoDesc:=自动核保通过    msp:getPhonePayPwd.do    mspNo:=$g_random$    flag:=Y;message:=发送成功    msp:pay.do    mspNo:=$g_random$    0.error:=交易成功
+    ...    msp:issueByBarCode.do    mspNo:=$g_random$    ResultInfoDesc:=投保成功    msp:issueByBarCode.slis.db
+
+14013新单录入到承保-仁康保1021-趸交-终身-附带重疾险-投保成功
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.1021:saveClient.do    mainProduct.productCode:=1021;mspApplyInfo.receivableAddBal:=1000;mainProduct.premPeriodType:=1;mainProduct.premPeriod:=0;mainProduct.premPeriodTypeDesc:=1_0;mainProduct.coverPeriodType:=6;mainProduct.coverPeriod:=999;mainProduct.coverPeriodTypeDesc:=6_999;mainProduct.sumInsured:=10000;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    msp.1021:saveHealthInform.do    policyQuestionnaireDTO[35].insQuestionAnswerList[0].answer:=N;policyQuestionnaireDTO[35].appQuestionAnswer.answer:=Y;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=投保规则检查通过    msp:imageUploding.do    mspNo:=$g_random$    ResultInfoDesc:=成功
+    ...    msp:ownCheck.do    mspNo:=$g_random$    ResultInfoDesc:=自动核保通过    msp:getPhonePayPwd.do    mspNo:=$g_random$    flag:=Y;message:=发送成功    msp:pay.do    mspNo:=$g_random$    0.error:=交易成功
+    ...    msp:issueByBarCode.do    mspNo:=$g_random$    ResultInfoDesc:=投保成功    msp:issueByBarCode.slis.db
+
+14014新单录入到承保-仁康保1021-年交-终身-附带重疾险-投保成功
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.1021:saveClient.do    mainProduct.productCode:=1021;mspApplyInfo.receivableAddBal:=0;mainProduct.premPeriodType:=2;mainProduct.premPeriod:=10;mainProduct.premPeriodTypeDesc:=2_10;mainProduct.coverPeriodType:=6;mainProduct.coverPeriod:=999;mainProduct.coverPeriodTypeDesc:=6_999;mainProduct.sumInsured:=10000;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    msp.1021:saveHealthInform.do    policyQuestionnaireDTO[35].insQuestionAnswerList[0].answer:=N;policyQuestionnaireDTO[35].appQuestionAnswer.answer:=Y;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=投保规则检查通过    msp:imageUploding.do    mspNo:=$g_random$    ResultInfoDesc:=成功
+    ...    msp:ownCheck.do    mspNo:=$g_random$    ResultInfoDesc:=自动核保通过    msp:getPhonePayPwd.do    mspNo:=$g_random$    flag:=Y;message:=发送成功    msp:pay.do    mspNo:=$g_random$    0.error:=交易成功
+    ...    msp:issueByBarCode.do    mspNo:=$g_random$    ResultInfoDesc:=投保成功    msp:issueByBarCode.slis.db
+
+14015新单录入到承保-仁康保1021-趸交-终身-附带重疾险住院费用补偿住院每日补贴-投保成功
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.1021_addition:saveClient.do    mainProduct.productCode:=1021;mspApplyInfo.receivableAddBal:=1000;mainProduct.premPeriodType:=1;mainProduct.premPeriod:=0;mainProduct.premPeriodTypeDesc:=1_0;mainProduct.coverPeriodType:=6;mainProduct.coverPeriod:=999;mainProduct.coverPeriodTypeDesc:=6_999;mainProduct.sumInsured:=100000;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    msp.1021_addition:saveHealthInform.do    policyQuestionnaireDTO[35].insQuestionAnswerList[0].answer:=N;policyQuestionnaireDTO[35].appQuestionAnswer.answer:=Y;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=投保规则检查通过    msp:imageUploding.do    mspNo:=$g_random$    ResultInfoDesc:=成功
+    ...    msp:ownCheck.do    mspNo:=$g_random$    ResultInfoDesc:=自动核保通过    msp:getPhonePayPwd.do    mspNo:=$g_random$    flag:=Y;message:=发送成功    msp:pay.do    mspNo:=$g_random$    0.error:=交易成功
+    ...    msp:issueByBarCode.do    mspNo:=$g_random$    ResultInfoDesc:=投保成功    msp:issueByBarCode.slis.db
+
+14016新单录入到承保-仁康保1021-年交-终身-附带重疾险住院费用补偿住院每日补贴-投保成功
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.1021_addition:saveClient.do    mainProduct.productCode:=1021;mspApplyInfo.receivableAddBal:=0;mainProduct.premPeriodType:=2;mainProduct.premPeriod:=10;mainProduct.premPeriodTypeDesc:=2_10;mainProduct.coverPeriodType:=6;mainProduct.coverPeriod:=999;mainProduct.coverPeriodTypeDesc:=6_999;mainProduct.sumInsured:=100000;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    msp.1021_addition:saveHealthInform.do    policyQuestionnaireDTO[35].insQuestionAnswerList[0].answer:=N;policyQuestionnaireDTO[35].appQuestionAnswer.answer:=Y;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=投保规则检查通过    msp:imageUploding.do    mspNo:=$g_random$    ResultInfoDesc:=成功
+    ...    msp:ownCheck.do    mspNo:=$g_random$    ResultInfoDesc:=自动核保通过    msp:getPhonePayPwd.do    mspNo:=$g_random$    flag:=Y;message:=发送成功    msp:pay.do    mspNo:=$g_random$    0.error:=交易成功
+    ...    msp:issueByBarCode.do    mspNo:=$g_random$    ResultInfoDesc:=投保成功    msp:issueByBarCode.slis.db
+
+14017未签约-走签约成功-签约支付-承保-爱相随
+    [Tags]    pay
+    [Template]    html_public_model
+    msp:payApplyComfirmAndPay.atp.dmldb    msp.1019:saveClient.do    mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$;mspAuthorizedAccount.accountNo:=6227 0088 0521 8977 991;mspAuthorizedAccount.bankCategory:=102    ResultInfoDesc:=健康告知    msp.1:saveHealthInform.do    mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=投保规则检查通过    msp:imageUploding.do    mspNo:=$g_random$    ResultInfoDesc:=成功
+    ...    msp:ownCheck.do    mspNo:=$g_random$    ResultInfoDesc:=自动核保通过    msp:getPhonePayPwd.do    mspNo:=$g_random$    flag:=Y;message:=发送成功    msp:chkBeforeUpdateAccount.do    mspNo:=$g_random$    ResultInfoDesc:=Y
+    ...    msp:payApply.do    mspNo:=$g_random$    flag:=Y    msp:getPayTransferResult.do    mspNo:=$g_random$    ResultInfoDesc:=0    msp:payApplyComfirmAndPay.do    mspNo:=$g_random$;checkCode:=111111    0.flag:=Y;0.error:=交易成功
+    ...    msp:issueByBarCode.do    mspNo:=$g_random$    ResultInfoDesc:=投保成功    msp:issueByBarCode.slis.db
+
+14018新单录入到承保-仁医保-有社保
+    [Tags]    smoke
+    [Template]    html_public_model
+    msp.1016:saveClient.do    insureds.clientInfo.socialInsurance:=1;mainProduct.productLevel:=1;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$;insureds.clientInfo.clientName:=$g_name$;insureds.clientInfo.idno:=$g_idcard$(19900101,2,01);insureds.clientInfo.sexCode:=2;insuredsBirthDay:=1990-01-01;insureds.clientEmail.emailAddress:=$g_mail$ ;insureds.mobilePhone.phoneNo:=$g_mobile$;insureds.homeAddress.detailAddress:=$g_addrs$;applicant.contactAddress.detailAddress:=$g_addrs$    ResultInfoDesc:=健康告知    msp.1:saveHealthInform.do    policyQuestionnaireDTO[35].insQuestionAnswerList[0].answer:=N;policyQuestionnaireDTO[35].appQuestionAnswer.answer:=Y;mspApplyInfo.mspNo:=$g_random$;mspNo:=$g_random$    ResultInfoDesc:=投保规则检查通过    msp:imageUploding.do    mspNo:=$g_random$    ResultInfoDesc:=成功
+    ...    msp:ownCheck.do    mspNo:=$g_random$    ResultInfoDesc:=自动核保通过    msp:getPhonePayPwd.do    mspNo:=$g_random$    flag:=Y;message:=发送成功    msp:pay.do    mspNo:=$g_random$    0.error:=交易成功
+    ...    msp:issueByBarCode.do    mspNo:=$g_random$    ResultInfoDesc:=投保成功    msp:issueByBarCode.slis.db
+
+

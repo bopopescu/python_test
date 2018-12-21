@@ -1,0 +1,11 @@
+insert into ousi_staff values (0,'部门01','用户01','123456','15603736666','admin');
+insert into ousi_staff values (0,'部门02','用户02','123456','15603736667','admin');
+insert into ousi_staff values (0,'部门03','用户03','123456','15603736668','admin');
+insert into ousi_staff values (0,'部门01','用户04','123456','15603736669','general');
+insert into ousi_staff values (0,'部门02','用户05','123456','15603736670','general');
+insert into ousi_staff values (0,'部门03','用户06','123456','15603736671','general');
+insert into ousi_staff values (0,'部门01','用户07','123456','15603736672','general');
+insert into ousi_staff values (0,'部门02','用户08','123456','15603736673','general');
+insert into ousi_staff values (0,'部门03','用户09','123456','15603736674','general');
+insert into ousi_staff values (0,'部门03','用户10','123456','15603736675','general');
+commit;
