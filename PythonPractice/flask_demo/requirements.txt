@@ -43,6 +43,6 @@ SQLAlchemy==1.2.14
 tornado==5.1.1
 urwid==2.0.1
 vine==1.1.4
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 wheel==0.31.1
 wsproto==0.11.0
