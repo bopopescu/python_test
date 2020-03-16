@@ -1,0 +1,6 @@
+2020-03-16 23:23:54 logging_demo.py[line:31] INFO 3, 4的斜边是5.0
+2020-03-16 23:34:38 logging_demo.py[line:31] INFO 3, 4的斜边是5.0
+2020-03-16 23:34:38 logging_demo.py[line:32] ERROR a=-3, b=4, a不能为负数
+2020-03-16 23:35:01 logging_demo.py[line:31] INFO 3, 4的斜边是5.0
+2020-03-16 23:35:01 logging_demo.py[line:32] ERROR a=-3, b=4, a不能为负数
+2020-03-16 23:35:01 logging_demo.py[line:33] WARNING a=-3, b=4, a不能为负数

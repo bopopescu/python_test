@@ -1,0 +1,12 @@
+2020-03-17 00:31:45,592 - logger_demo01.py[line:22] - INFO: 3, 4的斜边是5.0
+2020-03-17 00:31:45,592 - logger_demo01.py[line:23] - ERROR: a=-3, b=4, a不能为负数
+2020-03-17 00:31:45,592 - logger_demo01.py[line:24] - WARNING: a=-3, b=4, a不能为负数
+2020-03-17 00:40:17,388 - logger_demo01.py[line:22] - INFO: 3, 4的斜边是5.0
+2020-03-17 00:40:17,388 - logger_demo01.py[line:23] - ERROR: a=-3, b=4, a不能为负数
+2020-03-17 00:40:17,388 - logger_demo01.py[line:23] - ERROR: a=-3, b=4, a不能为负数
+2020-03-17 00:40:17,388 - logger_demo01.py[line:24] - WARNING: a=-3, b=4, a不能为负数
+2020-03-17 00:40:17,388 - logger_demo01.py[line:24] - WARNING: a=-3, b=4, a不能为负数
+2020-03-17 00:40:17,388 - logger_demo01.py[line:24] - WARNING: a=-3, b=4, a不能为负数
+2020-03-17 00:44:17,716 - logger_demo01.py[line:22] - INFO: 3, 4的斜边是5.0
+2020-03-17 00:44:17,716 - logger_demo01.py[line:23] - ERROR: a=-3, b=4, a不能为负数
+2020-03-17 00:44:17,716 - logger_demo01.py[line:24] - WARNING: a=-3, b=4, a不能为负数
